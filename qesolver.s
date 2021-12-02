@@ -36,6 +36,30 @@ valuec:
 
 	.text
 main:
+	la	$a0, intro
+	li	$v0, 4
+	syscall
+	la	$a0, prompta	#Get value for a
+	syscall
+	li	$v0, 6
+	syscall
+	mfc1	$t0, $f0
+	sw	$t0, valuea
+	la	$a0, promptb	#Get value for b
+	li	$v0, 4
+	syscall
+	li	$v0, 6
+	syscall
+	mfc1	$t0, $f0
+	sw	$t0, valueb
+	la	$a0, promptc	#Get value for c
+	li	$v0, 4
+	syscall
+	li	$v0, 6
+	syscall
+	mfc1	$t0, $f0
+	sw	$t0, valuec
+	jr	$ra
 
 quadeqs:
 
