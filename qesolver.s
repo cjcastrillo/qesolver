@@ -63,6 +63,46 @@ main:
 	l.s	$f13, valueb
 	l.s	$f14, valuec
 	jal	quadeqs
+	li	$a0, '\n'
+	li	$v0, 11
+	syscall
+	beq	$v0, -1, imaginary
+	beqz	$v0, none
+	beq	$v0, 1, single
+	la	$a0, result4	#2 roots, so print both
+	li	$v0, 4
+	syscall
+	mov.s	$f12, $f0
+	li	$v0, 1
+	syscall
+	li	$a0, '\n'
+	li	$v0, 11
+	syscall
+	la	$a0, result5
+	li	$v0, 4
+	syscall
+	mov.s	$f12, $f1
+	li	$v0, 1
+	syscall
+	b	exit
+imaginary:
+	la	$a0, result2
+	li	$v0, 4
+	syscall
+	b	exit
+none:
+	la	$a0, result1
+	li	$v0, 4
+	syscall
+	b	exit
+single:
+	la	$a0, result3
+	li	$v0, 4
+	syscall
+	mov.s	$f12, $f0
+	li	$v0, 1
+	syscall
+exit:
 	li	$v0, 10
 	syscall
 
