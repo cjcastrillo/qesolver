@@ -1,4 +1,4 @@
-Prompt the user for a, b, and c values of the quadratic formula and then solve it.  
+Prompt the user for a, b, and c values of the quadratic formula and then solve it. All values entered must be floats.  
 Uses coprocessor1(fpu) in order to work with floats.
 
 Helper methods:
