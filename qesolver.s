@@ -59,9 +59,34 @@ main:
 	syscall
 	mfc1	$t0, $f0
 	sw	$t0, valuec
-	jr	$ra
+	l.s	$f12, valuea
+	l.s	$f13, valueb
+	l.s	$f14, valuec
+	jal	quadeqs
+	li	$v0, 10
+	syscall
 
 quadeqs:
+	c.eq.s	$f12, $f20	#check if a and b values give a quadratic equation
+	bc1f	discriminant
+	c.eq.s	$f13, $f20
+	bc1f	singleroot
+	li	$v0, 0	#both a and b are 0 so not a quadratic equation
+	jr	$ra
+singleroot:		#linear functiong given, so 1 root return -c/b
+	li	$v0, 1
+	neg.s	$f16, $f14
+	div.s	$f0, $f16, $f13
+	jr	$ra
+discriminant:
+	mul.s	$f4, $f13, $f13	#calculate discriminant
+	mul.s	$f5, $f12, $f14
+	li.s	$f6, 4.0
+	mul.s	$f5, $f5, $f6
+	sub.s	$f4, $f4, $f5
+	c.lt.s	$f4, $f20
+	bc1f	tworoots
+	jr	$ra
 
 sqrts:
 	sqrt.s	$f0, $f12
