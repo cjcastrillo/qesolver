@@ -62,10 +62,10 @@ main:
 	l.s	$f12, valuea
 	l.s	$f13, valueb
 	l.s	$f14, valuec
-	jal	quadeqs
 	li	$a0, '\n'
 	li	$v0, 11
 	syscall
+	jal	quadeqs
 	beq	$v0, -1, imaginary
 	beqz	$v0, none
 	beq	$v0, 1, single
@@ -131,7 +131,11 @@ discriminant:
 tworoots:		#there are 2 roots. Finish rest of quadratic formula to find them
 	mov.s	$f5, $f12
 	mov.s	$f12, $f4
+	sub	$sp, $sp, 4
+	sw	$ra, ($sp)
 	jal	sqrts
+	lw	$ra, ($sp)
+	addi	$sp, $sp, 4
 	neg.s	$f6, $f13	#-b
 	li.s	$f7, 2.0
 	mul.s	$f8, $f5, $f7	#2a
