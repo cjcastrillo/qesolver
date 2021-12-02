@@ -35,3 +35,10 @@ valuec:
 	.float	0.0
 
 	.text
+main:
+
+quadeqs:
+
+sqrts:
+	sqrt.s	$f0, $f12
+	jr	$ra
