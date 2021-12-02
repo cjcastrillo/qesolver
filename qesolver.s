@@ -73,7 +73,7 @@ main:
 	li	$v0, 4
 	syscall
 	mov.s	$f12, $f0
-	li	$v0, 1
+	li	$v0, 2
 	syscall
 	li	$a0, '\n'
 	li	$v0, 11
@@ -82,7 +82,7 @@ main:
 	li	$v0, 4
 	syscall
 	mov.s	$f12, $f1
-	li	$v0, 1
+	li	$v0, 2
 	syscall
 	b	exit
 imaginary:
@@ -100,7 +100,7 @@ single:
 	li	$v0, 4
 	syscall
 	mov.s	$f12, $f0
-	li	$v0, 1
+	li	$v0, 2
 	syscall
 exit:
 	li	$v0, 10
