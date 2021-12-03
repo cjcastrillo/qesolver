@@ -5,7 +5,7 @@
 #	Course:		cs-2640-02-f21
 #
 #	Description:
-#				Use the FPU to do the qudratic formula
+#			Use the FPU to do the qudratic formula
 #
 	
 	.data
@@ -111,9 +111,9 @@ quadeqs:
 	bc1f	discriminant
 	c.eq.s	$f13, $f20
 	bc1f	singleroot
-	li	$v0, 0	#both a and b are 0 so not a quadratic equation
+	li	$v0, 0		#both a and b are 0 so not a quadratic equation
 	jr	$ra
-singleroot:		#linear functiong given, so only 1 root return -c/b
+singleroot:			#linear functiong given, so only 1 root return -c/b
 	li	$v0, 1
 	neg.s	$f16, $f14
 	div.s	$f0, $f16, $f13
@@ -126,9 +126,9 @@ discriminant:
 	sub.s	$f4, $f4, $f5
 	c.lt.s	$f4, $f20	#check if discriminant is negative
 	bc1f	tworoots
-	li	$v0, -1	#discriminant is negative so roots are not real numbers
+	li	$v0, -1		#discriminant is negative so roots are not real numbers
 	jr	$ra
-tworoots:		#there are 2 roots. Finish rest of quadratic formula to find them
+tworoots:			#there are 2 roots. Finish rest of quadratic formula to find them
 	mov.s	$f5, $f12
 	mov.s	$f12, $f4
 	sub	$sp, $sp, 4
@@ -142,7 +142,7 @@ tworoots:		#there are 2 roots. Finish rest of quadratic formula to find them
 	add.s	$f1, $f6, $f0
 	div.s	$f1, $f1, $f8	#(-b+sqrt(discriminant))/2a
 	sub.s	$f0, $f6, $f0
-	div.s	$f0, $f0, $f8	##(-b-sqrt(discriminant))/2a
+	div.s	$f0, $f0, $f8	#(-b-sqrt(discriminant))/2a
 	li	$v0, 2
 	jr	$ra
 
